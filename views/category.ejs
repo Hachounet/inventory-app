@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body class="body-grid">
+    <%- include("./partials/sidebar.ejs") %> <%-
+    include("./partials/searchbar.ejs") %>
+    <div class="content flex flex-just-cont-center">
+      <div
+        class="sub-content flex gap1 flex-wrap flex-just-cont-center width-75 padd1 oswald-400"
+      >
+        <% if (dynamicDisplay === "artists"){ %>
+          <%- include("./partials/category/dyna_artists.ejs") %>
+        <% } %>
+        <% if (dynamicDisplay === "albums"){ %>
+          <%- include("./partials/category/dyna_albums.ejs") %>
+        <% } %>
+        <% if (dynamicDisplay === "genres") { %>
+        <%- include("./partials/category/dyna_genres.ejs") %>
+         <% } %>
+        <% if (dynamicDisplay === "labels"){ %>
+        <%- include("./partials/category/dyna_labels.ejs") %>
+        <% } %>
+        <% if (dynamicDisplay === "releases"){ %>
+        <%- include("./partials/category/dyna_releases.ejs") %>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

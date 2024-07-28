@@ -1,0 +1,49 @@
+<p><%= dynamicPath %> <%= title %></p>
+<form action="" method="POST" class="flex flex-dir-col">
+  <label for="title">Album title:</label>
+  <input type="text" name="title" value="<%=album.title%>" />
+  <label for="artist">Artist:</label>
+  <select name="artist">
+    <% artists.forEach((artist) => { %>
+    <option value="<%=artist.id%>"><%=artist.firstname%> <%=artist.lastname%></option>
+    <% }) %>
+  </select>
+  <label for="releasedate">Release date:</label>
+  <input type="date" name="releasedate" value="<%=album.releasedate%>" />
+  <label for="genre">Genre:</label>
+  <select name="genre">
+    <% genres.forEach((genre) => {%>
+      <option value="<%=genre.id%>"><%=genre.name%></option>
+    <% }) %>
+    
+  </select>
+
+  <label for="label">Label:</label>
+  <select name="label" >
+    <% labels.forEach((label) => {%>
+      <option value="<%=label.id%>"><%=label.name%></option>
+    <%})%>
+
+  </select>
+
+  <label for="imageURL">Image URL:</label>
+  <input type="text" name="imageURL" value="<%=album.imageurl%>" />
+
+  <% if (dynamicPath === "Update"){ %>
+    <label for="secretpassword">Secret password : </label>
+  <input type="password" name="secretpassword" />
+  <% } %>
+
+  <button><%= dynamicPath %></button>
+
+ 
+
+</form>
+
+<% if (locals.errors) {%>
+  <ul>
+    <% errors.forEach(function(error) { %>
+    <li><%= error.msg %></li>
+    <% }); %>
+  </ul>
+  <% } %>

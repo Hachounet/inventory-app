@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body class="body-grid">
+    <%- include("./partials/sidebar.ejs") %> <%-
+    include("./partials/searchbar.ejs") %>
+    <div class="content">
+      <%- include("./partials/tools.ejs") %>
+
+      <div
+        class="sub-content flex flex-dir-col flex-just-cont-start flex-al-it-center gap1 oswald-400"
+      >
+        <span>Genre : <%= genreInfo.name %> (ID: <%=id%>)</span>
+        <span>Albums related :</span>
+        <% albumsRelated.forEach((album) => { %>
+          <div class="flex flex-dir-col flex-just-cont-center flex-al-it-center flex-basis ">
+            <img class="img-container" src="<%= album.imageurl%>" alt="">
+            <span><%= album.title %> </span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>

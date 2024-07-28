@@ -1,0 +1,26 @@
+<%= title %> <% if (dynaData.title !== null || dynaData.title !== undefined){ %>
+  <%= dynaData.title %>
+<% } %> ---
+<%= dynaData.firstname %>
+<%if (dynaData.lastname !== null || dynaData.lastname !== ""){ %>
+  <%= dynaData.lastname %>
+<% } %>
+
+<% if (dynaData.name !== null || dynaData.name !== ""){ %>
+  <%= dynaData.name %>
+  <% }%>
+<p>Do you really want to delete it ?</p>
+<p>To delete it, please enter the secret password.</p>
+<form action="<%=baseUrl%>/<%=id%>/delete" method="POST">
+  <input name="secretpassword" type="password" />
+  <button type="submit">Delete</button>
+</form>
+
+<% if (locals.errors) {%>
+  <ul>
+    <% errors.forEach(function(error) { %>
+    <li><%= error.msg %></li>
+    <% }); %>
+  </ul>
+  <% } %>
+  

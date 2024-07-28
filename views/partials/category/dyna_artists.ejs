@@ -1,0 +1,11 @@
+<% dynaData.forEach((data) => { %>
+    <div class="flex flex-dir-col flex-just-cont-center flex-al-it-center flex-basis clickable">
+      <a href="<%= route%>/<%=data.id%>"><img class="img-container" src="<%= data.imageurl %>" alt=""> </a>
+      <span><%= data.firstname %>
+      <% if (data.lastname !== undefined) { %>
+        <span><%= data.lastname %> </span>
+        <% }%>
+        </span>
+    </div>
+      
+  <% }) %>

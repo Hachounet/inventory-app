@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body class="body-grid">
+    <%- include("./partials/sidebar.ejs") %> <%-
+    include("./partials/searchbar.ejs") %>
+    <div
+      class="content flex flex-dir-col flex-just-cont-start flex-al-it-center gap1 padd1 oswald-400"
+    >
+      <div class="flex gap1">
+        <a href="/category/albums"><div
+          class="dash-card flex flex-dir-col flex-al-it-center flex-just-cont-sp-around purple-bg white-color clickable"
+        >
+          <span><%= locals.albumsNumber %> albums in store.</span
+          ><span>See more</span>
+        </div></a>
+        
+        <a href="/category/releases">
+          <div
+          class="dash-card flex flex-dir-col flex-al-it-center flex-just-cont-sp-around pink-bg white-color clickable"
+        >
+          <span><%= locals.totalItems %> items in stock.</span
+          ><span>See more</span>
+        </div>
+        </a>
+   
+        <div
+          class="dash-card flex flex-dir-col flex-al-it-center flex-just-cont-sp-around red-bg white-color clickable"
+        >
+          <span><%= locals.lowItems %> Items low in stock</span
+          ><span>/!\ Not implemented /!\</span>
+        </div>
+      </div>
+      <span>Recent releases : </span>
+      <div class="flex gap1">
+        <% locals.recentReleases.forEach((release) => { %>
+          <div class="flex flex-dir-col gap1 clickable" >
+            <a href="releases/<%=release.id%>/"><img class="img-container" src="<%= release.imageurl %>" alt=""></a>
+            
+            
+             <div class="flex flex-al-it-center flex-just-cont-center"><%= release.price %> $ - <%= release.stock %> in stock </div> </div>
+          <% })%>
+      </div>
+    </div>
+  </body>
+</html>

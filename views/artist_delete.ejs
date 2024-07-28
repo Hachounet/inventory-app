@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body class="body-grid">
+    <%- include("./partials/sidebar.ejs") %> <%-
+    include("./partials/searchbar.ejs") %>
+    <div
+      class="content oswald-400 flex flex-al-it-center flex-just-cont-center flex-dir-col gap1"
+    >
+      <%- include("./partials/delete_form.ejs") %>
+      <p>
+        Note : This is gonna delete all albums and all releases related to this
+        artist.
+      </p>
+    </div>
+  </body>
+</html>

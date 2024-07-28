@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body class="body-grid">
+    <%- include("./partials/sidebar.ejs") %> <%-
+    include("./partials/searchbar.ejs") %>
+    <div
+      class="content oswald-400 flex flex-al-it-center flex-just-cont-center flex-dir-col gap1"
+    >
+      <%- include("./partials/delete_form.ejs") %> Note: Delete this release
+      won't affect any others items.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<p><%= dynamicPath%> <%= title %></p>
+<form
+  action="/releases/<%if (typeof id!== undefined){ %>
+<%= id%>
+<% }%>/
+<%= dynamicPath%>"
+  method="POST"
+  class="flex flex-dir-col"
+>
+    <label for="album_name">Album:</label>
+    <select name="album_name" id="">
+        <% albums.forEach((album) => { %>
+            <option value="<%= album.id %>"> <%=album.title%> </option>
+        <% }) %>
+    </select>
+    <label for="format">Format:</label>
+    <select name="format" id="">
+      <option value="vinyle">vinyle</option>
+      <option value="cd">cd</option>
+    </select>
+    <label for="price">Price:</label>
+    <input type="number" name="price" value="<%= release.price %>">
+    <label for="stock">Stock:</label>
+    <input type="number" name="stock" value="<%= release.stock %>">
+    <label for="barcode">Barcode:</label>
+    <input type="text" name="barcode" value="<%=release.barcode%>">
+
+
+
+  <% if (dynamicPath === "Update"){ %>
+    <label for="secretpassword">Secret password : </label>
+  <input type="password" name="secretpassword" />
+  <% } %>
+  <button><%= dynamicPath %></button>
+</form>
+<% if (locals.errors) {%>
+  <ul>
+    <% errors.forEach(function(error) { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+  

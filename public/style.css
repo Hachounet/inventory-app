@@ -1,0 +1,400 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sec-color {
+  color: rgb(212, 160, 243);
+}
+
+.prim-color {
+  color: rgb(192, 144, 219);
+}
+
+.white-color {
+  color: rgb(255, 220, 247);
+}
+
+.text-align-c {
+  text-align: center;
+}
+
+.oswald-400 {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.4em;
+}
+
+.body-grid {
+  height: 100vh;
+  min-width: 100%;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 12vw 1fr;
+  grid-template-areas:
+    "nav search"
+    "nav content";
+}
+
+.nav-grid {
+  min-width: 20%;
+  grid-area: nav;
+  gap: 3rem;
+  padding-top: 2.5em;
+}
+
+.main-nav {
+  min-width: 150px;
+  background-image: linear-gradient(
+      201deg,
+      rgba(148, 148, 148, 0.07) 0%,
+      rgba(148, 148, 148, 0.07) 50%,
+      rgba(83, 83, 83, 0.07) 50%,
+      rgba(83, 83, 83, 0.07) 100%
+    ),
+    linear-gradient(
+      192deg,
+      rgba(176, 176, 176, 0.08) 0%,
+      rgba(176, 176, 176, 0.08) 50%,
+      rgba(180, 180, 180, 0.08) 50%,
+      rgba(180, 180, 180, 0.08) 100%
+    ),
+    linear-gradient(
+      48deg,
+      rgba(185, 185, 185, 0.1) 0%,
+      rgba(185, 185, 185, 0.1) 50%,
+      rgba(243, 243, 243, 0.1) 50%,
+      rgba(243, 243, 243, 0.1) 100%
+    ),
+    linear-gradient(
+      65deg,
+      rgba(172, 172, 172, 0.09) 0%,
+      rgba(172, 172, 172, 0.09) 50%,
+      rgba(209, 209, 209, 0.09) 50%,
+      rgba(209, 209, 209, 0.09) 100%
+    ),
+    linear-gradient(
+      4deg,
+      rgba(224, 224, 224, 0.03) 0%,
+      rgba(224, 224, 224, 0.03) 50%,
+      rgba(49, 49, 49, 0.03) 50%,
+      rgba(49, 49, 49, 0.03) 100%
+    ),
+    linear-gradient(
+      228deg,
+      rgba(152, 152, 152, 0.03) 0%,
+      rgba(152, 152, 152, 0.03) 50%,
+      rgba(130, 130, 130, 0.03) 50%,
+      rgba(130, 130, 130, 0.03) 100%
+    ),
+    linear-gradient(
+      163deg,
+      rgba(170, 170, 170, 0.08) 0%,
+      rgba(170, 170, 170, 0.08) 50%,
+      rgba(232, 232, 232, 0.08) 50%,
+      rgba(232, 232, 232, 0.08) 100%
+    ),
+    linear-gradient(
+      152deg,
+      rgba(12, 12, 12, 0.05) 0%,
+      rgba(12, 12, 12, 0.05) 50%,
+      rgba(161, 161, 161, 0.05) 50%,
+      rgba(161, 161, 161, 0.05) 100%
+    ),
+    linear-gradient(
+      302deg,
+      rgba(48, 48, 48, 0.1) 0%,
+      rgba(48, 48, 48, 0.1) 50%,
+      rgba(195, 195, 195, 0.1) 50%,
+      rgba(195, 195, 195, 0.1) 100%
+    ),
+    linear-gradient(90deg, rgb(144, 14, 253), rgb(74, 115, 255));
+
+  border-right: 1px solid darkgrey;
+}
+
+.link {
+  width: 100%;
+  text-align: center;
+}
+
+.clickable:hover {
+  scale: 0.9;
+  cursor: pointer;
+}
+
+a:visited {
+  text-decoration: none;
+  color: rgb(68, 50, 78);
+}
+
+a:link {
+  text-decoration: none;
+  color: rgb(118, 86, 136);
+}
+
+a:hover {
+  background-color: rgba(0, 0, 0, 0.048);
+}
+
+.content {
+  grid-area: content;
+  background-color: rgb(226, 226, 226);
+}
+
+.sub-content {
+}
+
+.li-deco {
+  list-style: none;
+}
+
+.img-container {
+  width: 250px;
+  height: 250px;
+  border: 1px solid black;
+}
+
+.searchbar {
+  grid-area: search;
+  border: 1px solid rgb(216, 207, 207);
+
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+input {
+  padding: 0.35em 1em;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: 1px solid black;
+}
+
+button:hover {
+  scale: 0.92;
+}
+
+button {
+  font-family: inherit;
+  padding: 0.15em 1em;
+  border-radius: 5px;
+  background-color: rgb(68, 50, 78);
+  color: white;
+  font-size: 0.75em;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-just-cont-center {
+  justify-content: center;
+}
+
+.flex-just-cont-sp-around {
+  justify-content: space-around;
+}
+
+.flex-al-it-center {
+  align-items: center;
+}
+
+.flex-dir-col {
+  flex-direction: column;
+}
+
+.flex-just-cont-start {
+  justify-content: start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-basis {
+  flex-basis: 25%;
+}
+
+.gap1 {
+  gap: 1rem;
+}
+
+.padd1 {
+  padding-top: 1rem;
+}
+
+.dash-card {
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.dash-card:hover {
+  scale: 1.03;
+}
+
+.purple-bg {
+  background-image: repeating-linear-gradient(
+      0deg,
+      hsla(284, 43%, 48%, 0.05) 0px,
+      hsla(284, 43%, 48%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(284, 43%, 48%, 0.05) 11px,
+      hsla(284, 43%, 48%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      hsla(284, 43%, 48%, 0.05) 0px,
+      hsla(284, 43%, 48%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(284, 43%, 48%, 0.05) 11px,
+      hsla(284, 43%, 48%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      hsla(284, 43%, 48%, 0.05) 0px,
+      hsla(284, 43%, 48%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(284, 43%, 48%, 0.05) 11px,
+      hsla(284, 43%, 48%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      hsla(284, 43%, 48%, 0.05) 0px,
+      hsla(284, 43%, 48%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(284, 43%, 48%, 0.05) 11px,
+      hsla(284, 43%, 48%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    linear-gradient(90deg, rgb(60, 9, 75), rgb(139, 70, 200));
+}
+
+.pink-bg {
+  background-image: repeating-linear-gradient(
+      45deg,
+      hsla(112, 98%, 100%, 0.05) 0px,
+      hsla(112, 98%, 100%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(112, 98%, 100%, 0.05) 11px,
+      hsla(112, 98%, 100%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(112, 98%, 100%, 0.05) 0px,
+      hsla(112, 98%, 100%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(112, 98%, 100%, 0.05) 11px,
+      hsla(112, 98%, 100%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      hsla(112, 98%, 100%, 0.05) 0px,
+      hsla(112, 98%, 100%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(112, 98%, 100%, 0.05) 11px,
+      hsla(112, 98%, 100%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(112, 98%, 100%, 0.05) 0px,
+      hsla(112, 98%, 100%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(112, 98%, 100%, 0.05) 11px,
+      hsla(112, 98%, 100%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    linear-gradient(90deg, rgb(229, 94, 170), rgb(247, 192, 238));
+}
+
+.red-bg {
+  background-image: repeating-linear-gradient(
+      45deg,
+      hsla(27, 91%, 45%, 0.1) 0px,
+      hsla(27, 91%, 45%, 0.1) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(27, 91%, 45%, 0.1) 11px,
+      hsla(27, 91%, 45%, 0.1) 12px,
+      transparent 12px,
+      transparent 22px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      hsla(27, 91%, 45%, 0.05) 0px,
+      hsla(27, 91%, 45%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(27, 91%, 45%, 0.05) 11px,
+      hsla(27, 91%, 45%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      hsla(27, 91%, 45%, 0.05) 0px,
+      hsla(27, 91%, 45%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(27, 91%, 45%, 0.05) 11px,
+      hsla(27, 91%, 45%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(27, 91%, 45%, 0.05) 0px,
+      hsla(27, 91%, 45%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(27, 91%, 45%, 0.05) 11px,
+      hsla(27, 91%, 45%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      hsla(27, 91%, 45%, 0.05) 0px,
+      hsla(27, 91%, 45%, 0.05) 1px,
+      transparent 1px,
+      transparent 11px,
+      hsla(27, 91%, 45%, 0.05) 11px,
+      hsla(27, 91%, 45%, 0.05) 12px,
+      transparent 12px,
+      transparent 32px
+    ),
+    linear-gradient(90deg, rgb(66, 24, 4), rgb(204, 64, 80));
+}
+
+.width-75 {
+  width: 75%;
+}

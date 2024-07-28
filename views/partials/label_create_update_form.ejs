@@ -1,0 +1,27 @@
+<p><%= dynamicPath%> <%= title %></p>
+<form
+  action="/labels/<%if (typeof id!== undefined){ %>
+<%= id%>
+<% }%>/
+<%= dynamicPath%>"
+  method="POST"
+  class="flex flex-dir-col"
+>
+  <label for="name">Label name:</label>
+  <input type="text" name="name" value="<%=label.name%>" />
+  <label for="foundedyear">Foundation year:</label>
+  <input type="text" name="foundedyear" value="<%=label.foundedyear%>">
+  <% if (dynamicPath === "Update"){ %>
+    <label for="secretpassword">Secret password : </label>
+  <input type="password" name="secretpassword" />
+  <% } %>
+  <button><%= dynamicPath %></button>
+</form>
+<% if (locals.errors) {%>
+  <ul>
+    <% errors.forEach(function(error) { %>
+    <li><%= error.msg %></li>
+    <% }); %>
+  </ul>
+  <% } %>
+  

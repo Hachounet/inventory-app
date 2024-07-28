@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body class="body-grid">
+    <%- include("./partials/sidebar.ejs") %> <%-
+    include("./partials/searchbar.ejs") %>
+    <div class="content">
+      <%- include("./partials/tools.ejs") %>
+
+      <div
+        class="sub-content flex flex-dir-col flex-just-cont-start flex-al-it-center gap1 oswald-400"
+      >
+        <img class="img-container" src="<%= releaseInfo.imageurl %>" alt="" />
+
+        <ul
+          class="flex flex-dir-col flex-just-cont-start flex-al-it-center gap1 li-deco"
+        >
+          <li><%= locals.releaseInfo.title %> (Release ID: <%=id%>)</li>
+          <li>Format : <%= locals.releaseInfo.format %></li>
+          <li>Price : <%= locals.releaseInfo.price %> $</li>
+          <li>Stock : <%= locals.releaseInfo.stock %></li>
+          <li>Barcode : <%= locals.releaseInfo.barcode %></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
