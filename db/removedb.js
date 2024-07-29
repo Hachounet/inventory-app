@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 const { Client } = require("pg");
 
 const SQL = `
@@ -14,7 +14,7 @@ GRANT ALL ON SCHEMA public TO public;
 async function main() {
   console.log("Removing...");
   const client = new Client({
-    connectionString: `${process.env.DEV_CONNEXION_STRING}`,
+    connectionString: `${process.env.CONNEXION_STRING}`,
   });
   await client.connect();
   await client.query(SQL);

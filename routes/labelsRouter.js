@@ -1,5 +1,5 @@
 const { Router } = require("express");
-
+const asyncHandler = require("express-async-handler");
 const {
   getLabelsCreatePage,
   getLabelsPage,
@@ -9,6 +9,8 @@ const {
   postLabelsUpdatePage,
   postLabelsCreatePage,
 } = require("../controllers/labelsController");
+
+const db = require("../db/queries");
 
 const labelsRouter = Router();
 
@@ -22,18 +24,47 @@ const validateId = (req, res, next) => {
   next();
 };
 
+const checkLabelExists = asyncHandler(async (req, res, next) => {
+  const { id } = req.params.id;
+  const exists = await db.checkIfLabelExists(id);
+  if (!exists) {
+    return res.status(404).render("404");
+  }
+  next();
+});
+
 labelsRouter.get("/create", getLabelsCreatePage);
 
 labelsRouter.post("/create", postLabelsCreatePage);
 
-labelsRouter.get("/:id(\\d+)", validateId, getLabelsPage);
+labelsRouter.get("/:id(\\d+)", validateId, checkLabelExists, getLabelsPage);
 
-labelsRouter.get("/:id(\\d+)/delete", validateId, getLabelsDeletePage);
+labelsRouter.get(
+  "/:id(\\d+)/delete",
+  validateId,
+  checkLabelExists,
+  getLabelsDeletePage,
+);
 
-labelsRouter.post("/:id(\\d+)/delete", validateId, postLabelsDeletePage);
+labelsRouter.post(
+  "/:id(\\d+)/delete",
+  validateId,
+  checkLabelExists,
+  postLabelsDeletePage,
+);
 
-labelsRouter.get("/:id(\\d+)/update", validateId, getLabelsUpdatePage);
+labelsRouter.get(
+  "/:id(\\d+)/update",
+  validateId,
+  checkLabelExists,
+  getLabelsUpdatePage,
+);
 
-labelsRouter.post("/:id(\\d+)/update", validateId, postLabelsUpdatePage);
+labelsRouter.post(
+  "/:id(\\d+)/update",
+  validateId,
+  checkLabelExists,
+  postLabelsUpdatePage,
+);
 
 module.exports = labelsRouter;

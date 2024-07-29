@@ -23,4 +23,8 @@ categoryRouter.get("/genres", getCategoryGenres);
 
 categoryRouter.get("/releases", getCategoryReleases);
 
+categoryRouter.get("*", (req, res) => {
+  res.send(404).render("404");
+});
+
 module.exports = categoryRouter;

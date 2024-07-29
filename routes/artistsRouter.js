@@ -1,5 +1,5 @@
 const { Router } = require("express");
-
+const asyncHandler = require("express-async-handler");
 const {
   getArtistsPage,
   getArtistsCreatePage,
@@ -9,6 +9,8 @@ const {
   postArtistsUpdatePage,
   postArtistsCreatePage,
 } = require("../controllers/artistsController");
+
+const db = require("../db/queries");
 
 const artistsRouter = Router();
 
@@ -22,18 +24,49 @@ const validateId = (req, res, next) => {
   next();
 };
 
+// Middleware for checking if artist exists
+
+const checkArtistExists = asyncHandler(async (req, res, next) => {
+  const { id } = req.params.id;
+  const exists = await db.checkIfArtistExists(id);
+  if (!exists) {
+    return res.status(404).render("404");
+  }
+  next();
+});
+
 artistsRouter.get("/create", getArtistsCreatePage);
 
 artistsRouter.post("/create", postArtistsCreatePage);
 
-artistsRouter.get("/:id(\\d+)", validateId, getArtistsPage);
+artistsRouter.get("/:id(\\d+)", validateId, checkArtistExists, getArtistsPage);
 
-artistsRouter.get("/:id(\\d+)/delete", validateId, getArtistsDeletePage);
+artistsRouter.get(
+  "/:id(\\d+)/delete",
+  validateId,
+  checkArtistExists,
+  getArtistsDeletePage,
+);
 
-artistsRouter.post("/:id(\\d+)/delete", validateId, postArtistsDeletePage);
+artistsRouter.post(
+  "/:id(\\d+)/delete",
+  validateId,
+  checkArtistExists,
+  postArtistsDeletePage,
+);
 
-artistsRouter.get("/:id(\\d+)/update", validateId, getArtistsUpdatePage);
+artistsRouter.get(
+  "/:id(\\d+)/update",
+  validateId,
+  checkArtistExists,
+  getArtistsUpdatePage,
+);
 
-artistsRouter.post("/:id(\\d+)/update", validateId, postArtistsUpdatePage);
+artistsRouter.post(
+  "/:id(\\d+)/update",
+  validateId,
+  checkArtistExists,
+  postArtistsUpdatePage,
+);
 
 module.exports = artistsRouter;

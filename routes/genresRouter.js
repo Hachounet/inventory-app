@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const asyncHandler = require("express-async-handler");
 
 const {
   getGenresCreatePage,
@@ -9,6 +10,8 @@ const {
   postGenresUpdatePage,
   postGenresCreatePage,
 } = require("../controllers/genresController");
+
+const db = require("../db/queries");
 
 const genresRouter = Router();
 
@@ -22,18 +25,47 @@ const validateId = (req, res, next) => {
   next();
 };
 
+const checkGenreExists = asyncHandler(async (req, res, next) => {
+  const { id } = req.params.id;
+  const exists = await db.checkIfGenreExists(id);
+  if (!exists) {
+    return res.status(404).render("404");
+  }
+  next();
+});
+
 genresRouter.get("/create", getGenresCreatePage);
 
 genresRouter.post("/create", postGenresCreatePage);
 
-genresRouter.get("/:id(\\d+)", validateId, getGenresPage);
+genresRouter.get("/:id(\\d+)", validateId, checkGenreExists, getGenresPage);
 
-genresRouter.get("/:id(\\d+)/delete", validateId, getGenresDeletePage);
+genresRouter.get(
+  "/:id(\\d+)/delete",
+  validateId,
+  checkGenreExists,
+  getGenresDeletePage,
+);
 
-genresRouter.post("/:id(\\d+)/delete", validateId, postGenresDeletePage);
+genresRouter.post(
+  "/:id(\\d+)/delete",
+  validateId,
+  checkGenreExists,
+  postGenresDeletePage,
+);
 
-genresRouter.get("/:id(\\d+)/update", validateId, getGenresUpdatePage);
+genresRouter.get(
+  "/:id(\\d+)/update",
+  validateId,
+  checkGenreExists,
+  getGenresUpdatePage,
+);
 
-genresRouter.post("/:id(\\d+)/update", validateId, postGenresUpdatePage);
+genresRouter.post(
+  "/:id(\\d+)/update",
+  validateId,
+  checkGenreExists,
+  postGenresUpdatePage,
+);
 
 module.exports = genresRouter;

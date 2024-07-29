@@ -82,7 +82,7 @@ exports.postGenresCreatePage = [
     const genreData = {
       name: req.body.genre,
     };
-    console.log("I am here ?");
+
     const resultID = await db.insertGenre(genreData.name);
     res.redirect(`/genres/${resultID}`);
   }),

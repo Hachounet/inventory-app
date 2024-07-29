@@ -461,6 +461,48 @@ async function updateRelease(id, albumID, format, price, stock, barcode) {
   );
 }
 
+async function checkIfAlbumExists(id) {
+  const { rows } = await pool.query(
+    "SELECT EXISTS(SELECT 1 FROM albums WHERE id = $1)",
+    [id],
+  );
+
+  return rows[0].exists;
+}
+
+async function checkIfArtistExists(id) {
+  const { rows } = await pool.query(
+    "SELECT EXISTS(SELECT 1 FROM artists WHERE id = $1)",
+    [id],
+  );
+  return rows[0].exists;
+}
+
+async function checkIfGenreExists(id) {
+  const { rows } = await pool.query(
+    "SELECT EXISTS(SELECT 1 FROM genres WHERE id = $1)",
+    [id],
+  );
+  return rows[0].exists;
+}
+
+async function checkIfLabelExists(id) {
+  const { rows } = await pool.query(
+    "SELECT EXISTS(SELECT 1 FROM labels WHERE id = $1)",
+    [id],
+  );
+
+  return rows[0].exists;
+}
+
+async function checkIfReleaseExistsByID(id) {
+  const { rows } = await pool.query(
+    "SELECT EXISTS(SELECT 1 FROM releases WHERE id = $1)",
+    [id],
+  );
+  return rows[0].exists;
+}
+
 module.exports = {
   checkIfTableExists,
   getTotalNumberAlbums,
@@ -498,4 +540,9 @@ module.exports = {
   checkIfReleaseExists,
   deleteRelease,
   updateRelease,
+  checkIfAlbumExists,
+  checkIfArtistExists,
+  checkIfGenreExists,
+  checkIfLabelExists,
+  checkIfReleaseExistsByID,
 };
