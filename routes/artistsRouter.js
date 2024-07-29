@@ -27,7 +27,7 @@ const validateId = (req, res, next) => {
 // Middleware for checking if artist exists
 
 const checkArtistExists = asyncHandler(async (req, res, next) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
   const exists = await db.checkIfArtistExists(id);
   if (!exists) {
     return res.status(404).render("404");

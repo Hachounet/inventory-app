@@ -1,9 +1,10 @@
+require("dotenv").config();
+
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const path = require("path");
 const { getLandingPage } = require("./controllers/appController");
 
-require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 const app = express();
 
 // Require all routers here

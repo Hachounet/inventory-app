@@ -26,7 +26,7 @@ const validateId = (req, res, next) => {
 };
 
 const checkGenreExists = asyncHandler(async (req, res, next) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
   const exists = await db.checkIfGenreExists(id);
   if (!exists) {
     return res.status(404).render("404");

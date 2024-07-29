@@ -25,7 +25,7 @@ const validateId = (req, res, next) => {
 };
 
 const checkLabelExists = asyncHandler(async (req, res, next) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
   const exists = await db.checkIfReleaseExistsByID(id);
   if (!exists) {
     return res.status(404).render("404");

@@ -27,7 +27,7 @@ const validateId = (req, res, next) => {
 // Middleware for checking if album exists
 
 const checkAlbumExists = asyncHandler(async (req, res, next) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
   const exists = await db.checkIfAlbumExists(id);
   if (!exists) {
     return res.status(404).render("404");

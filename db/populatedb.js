@@ -1,4 +1,4 @@
-require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
+require("dotenv").config();
 const { Client } = require("pg");
 
 const SQL = `
@@ -127,7 +127,7 @@ insert into releases( album_id, format, price, stock, barcode, imageURL) VALUES 
 async function main() {
   console.log("Seeding...");
   const client = new Client({
-    connectionString: `${process.env.CONNEXION_STRING}`,
+    connectionString: `${process.env.DATABASE_URL}`,
   });
 
   try {

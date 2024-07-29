@@ -1,10 +1,10 @@
-require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
+require("dotenv").config();
 const { Pool } = require("pg");
 
 module.exports = new Pool({
-  host: `${process.env.CUSTOM_HOST}`,
-  user: `${process.env.USER_ROLE}`,
-  database: `${process.env.DB_NAME}`,
-  password: `${process.env.PASSWORD}`,
-  port: process.env.CUSTOM_PORT,
+  host: `${process.env.PGHOST}`,
+  user: `${process.env.PGUSER}`,
+  database: `${process.env.PGDATABASE}`,
+  password: `${process.env.PGPASSWORD}`,
+  port: process.env.PGPORT,
 });
